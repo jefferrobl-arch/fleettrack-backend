@@ -10,7 +10,14 @@ app.use(helmet({
   crossOriginResourcePolicy: false,
   crossOriginOpenerPolicy: false
 }));
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5500',
+    'http://127.0.0.1:5500',
+    'https://fleettrack-frontend-gamma.vercel.app'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
